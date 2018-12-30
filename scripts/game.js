@@ -15,7 +15,9 @@ function Game(updateDur) {
 
   this.init = function() {
     this.bg.src = 'bg1.png';
-    this.myWG = new WaveGroup(2);
+    let newWG = new WaveGroup(2);
+    newWG.init();
+    this.myWG = newWG;
     this.lastUpdate = performance.now();
   };
 
@@ -37,7 +39,7 @@ function Game(updateDur) {
   };
 
   this.draw = function() {  // draw everything!
-    this.boxy.draw();
+    this.myWG.draw();
   }; // end draw
 
   this.update = function() {
@@ -51,7 +53,7 @@ function Game(updateDur) {
                 //   console.log('timesToUpdate = ', timesToUpdate);
                 // }
                 // general update area
-                this.boxy.update();
+                if (this.myWG !== undefined) { this.myWG.update(); }
               }
               this.lastUpdate = performance.now();
             } // end if

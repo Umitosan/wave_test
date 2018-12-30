@@ -361,6 +361,7 @@ $(document).ready(function() {
   // start things up!
   myGame = new Game(State.simSpeed); // ms per update()
   myGame.init();
+  console.log('myGame.myWG = ', myGame.myWG);
   State.myReq = requestAnimationFrame(gameLoop);
   State.loopRunning = true;
   State.gameStarted = false;
