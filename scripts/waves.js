@@ -13,6 +13,7 @@ function WaveGroup(q = 12) {
   this.xOffset = 0;
   this.xVel = 1;
   this.waveColor = undefined;
+  this.waveCTimer = 500;
 
   this.init = function() {
     this.startX = canW / 2;
@@ -37,6 +38,7 @@ function WaveGroup(q = 12) {
       ctx.save();
       ctx.translate(this.startX+0.5,this.startY+0.5);
       ctx.lineWidth = 1;
+      ctx.strokeStyle = this.waveColor;
       for (let i = (-400-this.xOffset); i <= 420; i+=1) { // left bound, right bound
         ctx.beginPath();
         ctx.moveTo(curX,curY*squishCoef);
@@ -58,9 +60,9 @@ function WaveGroup(q = 12) {
   this.update = function() {
     if ( ((this.squish + this.squishCoef) < -2.5) || ((this.squish + this.squishCoef) > 1) ) {
       this.squishCoef *= -1;
-
+      this.waveColor = randColor('rgba');
     }
-    this.squish += this.squishCoef*3;  // this * number = squish speed
+    this.squish += this.squishCoef*5;  // this * number = squish speed
     this.xOffset += this.xVel;
   };
 
