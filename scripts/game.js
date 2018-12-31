@@ -15,7 +15,7 @@ function Game(updateDur) {
 
   this.init = function() {
     this.bg.src = 'bg1.png';
-    let newWG = new WaveGroup(2);
+    let newWG = new WaveGroup();
     newWG.init();
     this.myWG = newWG;
     this.lastUpdate = performance.now();
